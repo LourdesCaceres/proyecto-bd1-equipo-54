@@ -1,8 +1,8 @@
 ### NORMALIZACION 1FN
-- modelamos la tabla `MEDIOS_PAGO`
+- Modelamos la tabla `MED_DE_PAGO`: el medio de pago en nuestro enunciado se trata de un atributo multivaluado, de forma que no podía ser atómico como lo requiere la 1FN, para ello propusimos una tabla MED_DE_PAGO que llevaría el detalle único del medio de pago asignado a la venta, en lugar de que cada venta tenga como atributo multivaluado el medio de pago.
 
 ### NORMALIZACION 2FN
-- creamos la tabla `PROVEEDOR_PRODUCTO`para asegurar la relación de N:M
+- creamos la tabla `PROVEEDOR_PRODUCTO`: las tablas individuales PROVEEDOR y PRODUCTO no aseguraba una relación de muchos a muchos (N:M) y no cumplían las dependencias parciales al CUIT del proveedor ser una FK en PRODUCTO, de forma que se daba a entender que un único proveedor podía proveer determinado producto, o que un único producto podía ser provisto de determinado proveedor, siendo que según nuestro enunciado, los productos pueden venir de varios proveedores y cada proveedor puede llevar muchos productos.
 
 ### NORMALIZACION 3FN
-- eliminamos la tabla `STOCK`
+- eliminamos la tabla `STOCK` y `SE_DESCUENTA`: ambas tablas surgieron de la regla de negocio que establece que se descuenta el stock tras una venta, pero tras una revisión vimos que no cumplía con la normalización al la tabla STOCK no tener clave primaria, sus atributos tampoco dependían de ella y además tenía una dependencia transitiva entre el código de producto y el número de comprobante. Optamos por eliminar esta tabla para mantener la normalización y las reglas de negocio, por extensión también fue eliminada la relación SE_DESCUENTA que no cumplía ningún propósito, agregando el atributo cant_disponible a la tabla PRODUCTO para mantener la regla de negocio del enunciado.
