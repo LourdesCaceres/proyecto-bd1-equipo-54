@@ -1,1 +1,1 @@
-[Modelo relacional SportMax](https://drive.google.com/drive/folders/1or7-_Ajuo5NQBHvpY5Ijk5P8IMlUun7L)
+[Modelo relacional SportMax](https://drive.google.com/file/d/1tDNrShLUnGvUbWduWcdCEMMBH4S8hkfw/view?usp=sharing)
