@@ -1,6 +1,8 @@
-1. Especialización de Persona en Cliente y Vendedor
+# *Decisiones del Diseño Conceptual y Lógico*
 
-Decisión: Persona se modela como entidad fuerte, especializada de forma total y excluyente en Cliente y Vendedor.
+### *1. Especialización de Persona en Cliente y Vendedor*
+
+Decisión: _Persona_ se modela como entidad fuerte, especializada de forma total y excluyente en Cliente y Vendedor.
 
 Alternativas consideradas: Modelar Cliente y Vendedor como entidades independientes, sin una entidad Persona que las englobe.
 
