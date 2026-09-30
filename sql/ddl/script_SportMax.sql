@@ -30,15 +30,15 @@ CREATE TABLE VENDEDOR
 CREATE TABLE MED_DE_PAGO
 (
   cod_pago INT NOT NULL,
-  detalle ('Efectivo',' Transferencia', 'Débito', 'Crédito') NOT NULL,
+  detalle VARCHAR(20) CHECK (detalle IN ('Efectivo',' Transferencia', 'Débito', 'Crédito')) NOT NULL,
   PRIMARY KEY (cod_pago)
 );
 
 CREATE TABLE VENTAS
 (
   numero_com INT NOT NULL,
-  fecha DATE NOT NULL,
-  cant_cuotas ('1', '2', '3') NOT NULL,
+  fecha DATETIME NOT NULL DEFAULT GETDATE(),
+  cant_cuotas INT CHECK (cant_cuotas IN (1,2,3)) NOT NULL,
   cod_pago INT NOT NULL,
   DNI_cliente INT NOT NULL,
   DNI_vendedor INT NOT NULL,
@@ -51,14 +51,14 @@ CREATE TABLE VENTAS
 CREATE TABLE CATEGORIA
 (
   descripcion VARCHAR(100) NOT NULL,
-  cod_categoria INT NOT NULL,
+  cod_categoria INT IDENTIFY(1,1) NOT NULL,
   PRIMARY KEY (cod_categoria)
 );
 
 CREATE TABLE PRODUCTO
 (
-  precio_actual INT NOT NULL,
-  cod_producto INT NOT NULL,
+  precio_actual DECIMAL(10,2) NOT NULL,
+  cod_producto INT IDENTIFY(1,1) NOT NULL,
   cant_disponible INT NOT NULL,
   cod_categoria INT NOT NULL,
   PRIMARY KEY (cod_producto),
@@ -76,7 +76,7 @@ CREATE TABLE PROVEEDOR
 
 CREATE TABLE DETALLE_VENTA
 (
-  precio_unit INT NOT NULL,
+  precio_unit DECIMA(10,2) NOT NULL,
   cantidad INT NOT NULL,
   cod_producto INT NOT NULL,
   numero_com INT NOT NULL,
