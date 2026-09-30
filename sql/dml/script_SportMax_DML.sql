@@ -18,6 +18,24 @@ VALUES
 ('Av. Libertad 612', 'Pablo', 40993044, 'pavlov2005kpo@gmail.com', 'Espinoza', 38824522),
 ('San Martin', 'Gaston', 41643554, 'gatovegetta07@hotmail.com', 'Escalante', 37729002);
 
+INSERT INTO CATEGORIA (descripcion)
+VALUES
+('Indumentaria'),
+('Accesorios'),
+('Equipo');
+
+INSERT INTO PROVEEDOR (CUIT, razon_social, Direccion, telefono)
+VALUES
+(55634675, 'Hermanos Ramirez S.A', 'Av. Las Heras 533', 34556756),
+(59645223, 'Sporty Enterprises SRL.', 'Los Gladiolos 223', 34886756),
+(60934675, 'Unión Deportiva', 'Av. Libertad 877', 34556455),
+(66638875, 'Hernandez y asociados S.A', 'Av. Las Heras 223', 34111756),
+(81643675, 'UltraSport SRL.', 'Las Violetas 1543', 66553756),
+(55634888, 'Laboratorios Sinemal S.A', 'Av. Las Heras 1886', 49976756),
+(55611275, 'Martinez y Martinez S.A', 'San Juan 233', 22356756),
+(59864675, 'Laboratorios RunnerX SRL', 'Av. Maipú 1335', 34116789),
+
+
 INSERT INTO CLIENTE (fecha_alta, DNI_cliente)
 VALUES
 ('2026-09-01', 40543222),
