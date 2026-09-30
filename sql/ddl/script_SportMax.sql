@@ -25,7 +25,7 @@ CREATE TABLE MED_DE_PAGO (
 );
 
 CREATE TABLE CATEGORIA (
-  cod_categoria INT IDENTIFY(1,1) NOT NULL,
+  cod_categoria INT IDENTITY(1,1) NOT NULL,
   descripcion VARCHAR(100) CHECK (descripcion IN('Indumentaria', 'Accesorio', 'Equipo')) NOT NULL,
   CONSTRAINT PK_Categoria PRIMARY KEY (cod_categoria)
 );
@@ -54,7 +54,8 @@ CREATE TABLE VENDEDOR (
 );
 
 CREATE TABLE PRODUCTO (
-  cod_producto INT IDENTIFY(1,1) NOT NULL,
+  cod_producto INT IDENTITY(1,1) NOT NULL,
+  nombre VARCHAR(100) NOT NULL UNIQUE,
   precio_actual DECIMAL(10,2) NOT NULL CHECK (precio_actual > 0),
   cant_disponible INT NOT NULL CHECK (cant_disponible >= 0),
   cod_categoria INT NOT NULL,
@@ -76,7 +77,7 @@ CREATE TABLE VENTAS (
 );
 
 CREATE TABLE DETALLE_VENTA (
-  precio_unit DECIMAL(10,2) NOT NULL CHECK (precio_actual > 0),
+  precio_unit DECIMAL(10,2) NOT NULL CHECK (precio_unit > 0),
   cantidad INT NOT NULL CHECK (cantidad > 0),
   cod_producto INT NOT NULL,
   numero_com INT NOT NULL,
