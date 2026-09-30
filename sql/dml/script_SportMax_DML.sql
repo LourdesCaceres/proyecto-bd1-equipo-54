@@ -21,7 +21,7 @@ VALUES
 INSERT INTO CATEGORIA (descripcion)
 VALUES
 ('Indumentaria'),
-('Accesorios'),
+('Accesorio'),
 ('Equipo');
 
 INSERT INTO PROVEEDOR (CUIT, razon_social, Direccion, telefono)
