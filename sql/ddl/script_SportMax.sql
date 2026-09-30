@@ -55,8 +55,8 @@ CREATE TABLE VENDEDOR (
 
 CREATE TABLE PRODUCTO (
   cod_producto INT IDENTIFY(1,1) NOT NULL,
-  precio_actual DECIMAL(10,2) NOT NULL,
-  cant_disponible INT NOT NULL,
+  precio_actual DECIMAL(10,2) NOT NULL CHECK (precio_actual > 0),
+  cant_disponible INT NOT NULL CHECK (cant_disponible >= 0),
   cod_categoria INT NOT NULL,
   CONSTRAINT PK_Producto PRIMARY KEY (cod_producto),
   CONSTRAINT FK_Producto_Categoria FOREIGN KEY (cod_categoria) REFERENCES CATEGORIA(cod_categoria)
@@ -76,8 +76,8 @@ CREATE TABLE VENTAS (
 );
 
 CREATE TABLE DETALLE_VENTA (
-  precio_unit DECIMAL(10,2) NOT NULL,
-  cantidad INT NOT NULL,
+  precio_unit DECIMAL(10,2) NOT NULL CHECK (precio_actual > 0),
+  cantidad INT NOT NULL CHECK (cantidad > 0),
   cod_producto INT NOT NULL,
   numero_com INT NOT NULL,
   CONSTRAINT PK_DetalleVenta PRIMARY KEY (cod_producto, numero_com),
