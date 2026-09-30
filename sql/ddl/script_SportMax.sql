@@ -12,7 +12,7 @@ CREATE TABLE PERSONA (
   direccion VARCHAR(50) NOT NULL,
   nombre VARCHAR(50) NOT NULL,
   DNI INT NOT NULL,
-  email VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
   apellido VARCHAR(50) NOT NULL,
   telefono INT NOT NULL,
   CONSTRAINT PK_Persona PRIMARY KEY (DNI)
@@ -34,9 +34,9 @@ CREATE TABLE VENDEDOR (
 );
 
 CREATE TABLE MED_DE_PAGO (
-  cod_pago INT NOT NULL,
+  cod_pago INT IDENTITY(1,1) NOT NULL,
   detalle VARCHAR(20) CHECK (detalle IN ('Efectivo',' Transferencia', 'Débito', 'Crédito')) NOT NULL,
-  PRIMARY KEY (cod_pago)
+  CONSTRAINT PK_medPago PRIMARY KEY (cod_pago)
 );
 
 CREATE TABLE VENTAS (
@@ -46,44 +46,42 @@ CREATE TABLE VENTAS (
   cod_pago INT NOT NULL,
   DNI_cliente INT NOT NULL,
   DNI_vendedor INT NOT NULL,
-  PRIMARY KEY (numero_com),
-  FOREIGN KEY (cod_pago) REFERENCES MED_DE_PAGO(cod_pago),
-  FOREIGN KEY (DNI_cliente) REFERENCES CLIENTE(),
-  FOREIGN KEY (DNI_vendedor) REFERENCES VENDEDOR()
+  CONSTRAINT PK_Ventas PRIMARY KEY (numero_com),
+  CONSTRAINT FK_Ventas_MedDePago FOREIGN KEY (cod_pago) REFERENCES MED_DE_PAGO(cod_pago),
+  CONSTRAINT FK_Ventas_Cliente FOREIGN KEY (DNI_cliente) REFERENCES CLIENTE(),
+  CONSTRAINT FK_Ventas_Vendedor FOREIGN KEY (DNI_vendedor) REFERENCES VENDEDOR()
 );
 
 CREATE TABLE CATEGORIA (
-  descripcion VARCHAR(100) NOT NULL,
   cod_categoria INT IDENTIFY(1,1) NOT NULL,
-  PRIMARY KEY (cod_categoria)
+  descripcion VARCHAR(100) NOT NULL,
+  CONSTRAINT PK_Categoria PRIMARY KEY (cod_categoria)
 );
 
-CREATE TABLE PRODUCTO
-(
-  precio_actual DECIMAL(10,2) NOT NULL,
+CREATE TABLE PRODUCTO (
   cod_producto INT IDENTIFY(1,1) NOT NULL,
+  precio_actual DECIMAL(10,2) NOT NULL,
   cant_disponible INT NOT NULL,
   cod_categoria INT NOT NULL,
-  PRIMARY KEY (cod_producto),
-  FOREIGN KEY (cod_categoria) REFERENCES CATEGORIA(cod_categoria)
+  CONSTRAINT PK_Producto PRIMARY KEY (cod_producto),
+  CONSTRAINT FK_Producto_Categoria FOREIGN KEY (cod_categoria) REFERENCES CATEGORIA(cod_categoria)
 );
 
 CREATE TABLE PROVEEDOR (
   CUIT INT NOT NULL,
-  razon_social VARCHAR(50) NOT NULL,
+  razon_social VARCHAR(50) NOT NULL UNIQUE,
   Direccion VARCHAR(50) NOT NULL,
   telefono INT NOT NULL,
-  PRIMARY KEY (CUIT)
+  CONSTRAINT PK_Proveedor PRIMARY KEY (CUIT)
 );
 
-CREATE TABLE DETALLE_VENTA
-(
-  precio_unit DECIMA(10,2) NOT NULL,
+CREATE TABLE DETALLE_VENTA (
+  precio_unit DECIMAL(10,2) NOT NULL,
   cantidad INT NOT NULL,
   cod_producto INT NOT NULL,
   numero_com INT NOT NULL,
-  PRIMARY KEY (cod_producto, numero_com),
-  FOREIGN KEY (cod_producto) REFERENCES PRODUCTO(cod_producto),
+  CONSTRAINT PK_DetalleVenta PRIMARY KEY (cod_producto, numero_com),
+  CONSTRAINT FK_DetalleVenta_Ventas FOREIGN KEY (cod_producto) REFERENCES PRODUCTO(cod_producto),
   FOREIGN KEY (numero_com) REFERENCES VENTAS(numero_com)
 );
 
