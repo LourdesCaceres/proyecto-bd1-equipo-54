@@ -20,13 +20,13 @@ CREATE TABLE PERSONA (
 
 CREATE TABLE MED_DE_PAGO (
   cod_pago INT IDENTITY(1,1) NOT NULL,
-  detalle VARCHAR(20) CHECK (detalle IN ('Efectivo',' Transferencia', 'Débito', 'Crédito')) NOT NULL,
+  detalle VARCHAR(20) CHECK (detalle IN ('Efectivo', 'Transferencia', 'Débito', 'Crédito')) NOT NULL,
   CONSTRAINT PK_medPago PRIMARY KEY (cod_pago)
 );
 
 CREATE TABLE CATEGORIA (
   cod_categoria INT IDENTIFY(1,1) NOT NULL,
-  descripcion VARCHAR(100) NOT NULL,
+  descripcion VARCHAR(100) CHECK (descripcion IN('Indumentaria', 'Accesorio', 'Equipo')) NOT NULL,
   CONSTRAINT PK_Categoria PRIMARY KEY (cod_categoria)
 );
 
