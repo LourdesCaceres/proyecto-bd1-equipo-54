@@ -103,3 +103,21 @@ VALUES
 (1009, 2, 4, 41643554, 38557890),
 (1010, 1, 2, 43335655, 40333757);
 GO
+
+--- Inserción en DETALLE_VENTA
+--- Se simulan los renglones de las ventas.
+--- La Venta 1001 tiene dos productos distintos para probar subtotales luego.
+INSERT INTO DETALLE_VENTA (precio_unit, cantidad, cod_producto, numero_com)
+VALUES
+(45000.00, 1, 1, 1001), 
+(25000.00, 2, 2, 1001), 
+(85000.00, 1, 3, 1002),
+(12000.00, 3, 4, 1003),
+(15000.00, 1, 5, 1004),
+(5500.00,  4, 6, 1005),
+(35000.00, 2, 7, 1006),
+(42000.00, 1, 8, 1007),
+(22000.00, 5, 9, 1008),
+(8500.00,  2, 10, 1009),
+(45000.00, 1, 1, 1010);
+GO
