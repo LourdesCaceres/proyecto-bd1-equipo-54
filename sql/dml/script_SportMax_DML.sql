@@ -59,6 +59,23 @@ VALUES
 ('Débito'),
 ('Crédito');
 
+--- Inserción en PRODUCTO
+--- cod_producto es IDENTITY(1,1), el motor asignará del 1 al 10.
+--- cod_categoria asume: 1 (Indumentaria), 2 (Accesorio), 3 (Equipo)
+INSERT INTO PRODUCTO (nombre, precio_actual, cant_disponible, cod_categoria)
+VALUES
+('Camiseta Titular Selección Argentina', 45000.00, 50, 1),
+('Short de Entrenamiento Deportivo', 25000.00, 35, 1),
+('Zapatillas Running Ultraboost', 85000.00, 15, 1),
+('Gorra Deportiva Clásica', 12000.00, 100, 2),
+('Botella de Agua Térmica 1L', 15000.00, 40, 2),
+('Muñequera Toalla Absorbente x2', 5500.00, 80, 2),
+('Mancuernas Hexagonales 5kg', 35000.00, 20, 3),
+('Bolso Deportivo 50 Litros', 42000.00, 12, 3),
+('Pelota de Fútbol Profesional', 22000.00, 60, 3),
+('Medias de Compresión Larga', 8500.00, 45, 1);
+GO
+
 INSERT INTO PROVEEDOR_PRODUCTO (CUIT, cod_producto)
 VALUES
 (55634675, 1),
