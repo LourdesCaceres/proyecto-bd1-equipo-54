@@ -47,3 +47,19 @@ VALUES
 ('2026-09-12', 40889234);
 GO
 
+-- Agregar la columna fecha a la tabla
+ALTER TABLE VENTAS ADD fecha DATETIME;
+GO
+
+-- Actualizar los registros del 1001 al 1010 con sus fechas correspondientes
+UPDATE VENTAS SET fecha = '2026-08-31 10:15:00' WHERE numero_com = 1001;
+UPDATE VENTAS SET fecha = '2026-09-02 11:30:00' WHERE numero_com = 1002;
+UPDATE VENTAS SET fecha = '2026-09-03 16:45:00' WHERE numero_com = 1003;
+UPDATE VENTAS SET fecha = '2026-09-05 09:20:00' WHERE numero_com = 1004;
+UPDATE VENTAS SET fecha = '2026-09-08 14:10:00' WHERE numero_com = 1005;
+UPDATE VENTAS SET fecha = '2026-09-12 18:05:00' WHERE numero_com = 1006;
+UPDATE VENTAS SET fecha = '2026-09-15 10:00:00' WHERE numero_com = 1007;
+UPDATE VENTAS SET fecha = '2026-09-20 17:30:00' WHERE numero_com = 1008;
+UPDATE VENTAS SET fecha = '2026-09-25 12:15:00' WHERE numero_com = 1009;
+UPDATE VENTAS SET fecha = '2026-09-29 19:40:00' WHERE numero_com = 1010;
+GO
