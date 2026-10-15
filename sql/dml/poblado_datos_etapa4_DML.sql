@@ -1,1 +1,49 @@
+USE SistemaSportMax;
+GO
+
+  ---Insertamos nuevas personas---
+INSERT INTO PERSONA (direccion, nombre, DNI, email, apellido, telefono)
+VALUES
+('Av. 3 de Abril 1245', 'Gonzalo', 42115678, 'gonza.corrientes@gmail.com', 'Acosta', 37941234),
+('Córdoba 840', 'Camila', 41882345, 'cami_valdez99@hotmail.com', 'Valdez', 37948890),
+('Av. Ferré 2150', 'Matías', 40123987, 'matias.rodriguez@yahoo.com', 'Rodriguez', 37943321),
+('Mendoza 620', 'Valentina', 44230112, 'valen.romero01@gmail.com', 'Romero', 37951122),
+('Av. Pujol 1890', 'Joaquín', 39887123, 'joaco_ramirez@hotmail.com', 'Ramirez', 37947766),
+('Pellegrini 1032', 'Lucía', 43554901, 'lulu.benitez22@gmail.com', 'Benítez', 37949988),
+('Av. Centenario 3410', 'Agustín', 42998341, 'agustingomez_ctes@gmail.com', 'Gómez', 37946655),
+('Carlos Pellegrini 1450', 'Florencia', 41320554, 'flor_ferreyra@yahoo.com', 'Ferreyra', 37953344),
+('Av. Armenia 2800', 'Nicolas', 40776123, 'nico.alvarez00@gmail.com', 'Álvarez', 37942211),
+('Catamarca 915', 'Mariana', 38991204, 'marianita_cano@hotmail.com', 'Cano', 37958877),
+('Av. Chacabuco 1520', 'Diego', 42443098, 'diego.sosa.ctes@gmail.com', 'Sosa', 37945511),
+('Belgrano 1780', 'Rocío', 43112987, 'roci_mendez98@gmail.com', 'Méndez', 37940033),
+('9 de Julio 1120', 'Esteban', 39554123, 'esteban_barrios@yahoo.com', 'Barrios', 37956622),
+('Av. Independencia 4200', 'Micaela', 41223876, 'mica.duarte02@gmail.com', 'Duarte', 37944499),
+('Salta 530', 'Facundo', 40889234, 'facu_ojeda_ctes@hotmail.com', 'Ojeda', 37952288);
+GO
+
+  ---Modificación de fecha de alta para un cliente---
+UPDATE CLIENTE
+SET fecha_alta = '2026-08-30'
+WHERE DNI_cliente = 40543222;
+GO
+
+  ---Alta de los nuevos clientes---
+INSERT INTO CLIENTE (fecha_alta, DNI_cliente)
+VALUES
+('2026-09-05', 42115678),
+('2026-09-05', 41882345),
+('2026-09-06', 40123987),
+('2026-09-06', 44230112),
+('2026-09-07', 39887123),
+('2026-09-08', 43554901),
+('2026-09-08', 42998341),
+('2026-09-09', 41320554),
+('2026-09-09', 40776123),
+('2026-09-10', 38991204),
+('2026-09-10', 42443098),
+('2026-09-11', 43112987),
+('2026-09-11', 39554123),
+('2026-09-12', 41223876),
+('2026-09-12', 40889234);
+GO
 
