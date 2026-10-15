@@ -33,7 +33,7 @@ VALUES
 (81643675, 'UltraSport SRL.', 'Las Violetas 1543', 66553756),
 (55634888, 'Laboratorios Sinemal S.A', 'Av. Las Heras 1886', 49976756),
 (55611275, 'Martinez y Martinez S.A', 'San Juan 233', 22356756),
-(59864675, 'Laboratorios RunnerX SRL', 'Av. Maipú 1335', 34116789),
+(59864675, 'Laboratorios RunnerX SRL', 'Av. Maipú 1335', 34116789);
 
 
 INSERT INTO CLIENTE (fecha_alta, DNI_cliente)
@@ -74,7 +74,6 @@ VALUES
 ('Bolso Deportivo 50 Litros', 42000.00, 12, 3),
 ('Pelota de Fútbol Profesional', 22000.00, 60, 3),
 ('Medias de Compresión Larga', 8500.00, 45, 1);
-GO
 
 INSERT INTO PROVEEDOR_PRODUCTO (CUIT, cod_producto)
 VALUES
@@ -88,7 +87,6 @@ VALUES
 (59864675, 8),
 (55634675, 9),
 (60934675, 10);
-GO
 
 INSERT INTO VENTAS (numero_com, cant_cuotas, cod_pago, DNI_cliente, DNI_vendedor)
 VALUES
@@ -102,7 +100,6 @@ VALUES
 (1008, 1, 3, 47616254, 41733222),
 (1009, 2, 4, 41643554, 38557890),
 (1010, 1, 2, 43335655, 40333757);
-GO
 
 --- Inserción en DETALLE_VENTA
 --- Se simulan los renglones de las ventas.
