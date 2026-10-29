@@ -8,7 +8,8 @@
 USE SistemaSportMax;
 GO
 
-CREATE PROCEDURE dbo.sp_RegistroVenta
+--- Crear o alterar procedimiento almacenado
+CREATE OR ALTER PROCEDURE dbo.sp_RegistroVenta
     @numero_com   INT,
     @cant_cuotas  INT,
     @cod_pago     INT,
@@ -23,10 +24,26 @@ BEGIN
 	BEGIN TRY
 		BEGIN TRANSACTION;
 
-	--- Stock disponible antes de operar
+--- Stock disponible antes de operar
 		SELECT @stock_actual = cant_disponible
 		FROM PRODUCTO
 		WHERE cod_producto = @cod_producto;
+
+--- Control de existencia del producto
+        IF @stock_actual IS NULL
+        BEGIN
+            ROLLBACK TRANSACTION;
+            RAISERROR('Error: El producto especificado no existe.', 16, 1);
+            RETURN;
+        END
+
+--- Validación explícita de stock insuficiente (RN.11) dentro del flujo normal
+        IF @cantidad > @stock_actual
+        BEGIN
+            ROLLBACK TRANSACTION;
+            PRINT 'Se ejecuto ROLLBACK. Motivo: stock insuficiente.';
+            RETURN;
+        END
 
 	--- Registrar venta
 		INSERT INTO VENTAS (numero_com, cant_cuotas, cod_pago, DNI_cliente, DNI_vendedor)
@@ -44,18 +61,15 @@ BEGIN
 	        SET cant_disponible = cant_disponible - @cantidad
         	WHERE cod_producto = @cod_producto
 
-	--IF @cantidad < @stock_actual
-		--BEGIN
 		   COMMIT TRANSACTION;
-		   PRINT 'Stock suficiente: se ejecuto COMMIT. Venta registrada y stock actualizado.';
-		--END
+		   PRINT 'Venta registrada y stock actualizado.';
+
     END TRY
     BEGIN CATCH
-        IF @cantidad > @stock_actual
+        --- Ante cualquier error de ejecución imprevisto (ej. clave duplicada)
+        IF @@TRANCOUNT > 0
             ROLLBACK TRANSACTION;
- 
-        PRINT 'Se ejecuto ROLLBACK. No quedo venta, detalle ni cambio de stock. Motivo: stock insuficiente';
- 
+        PRINT 'Se ejecuto ROLLBACK por error de ejecucion en la transaccion.';
         THROW;
     END CATCH;
 END;
