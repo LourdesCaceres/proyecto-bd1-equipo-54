@@ -38,3 +38,9 @@
 
 
 <img width="992" height="682" alt="Captura de pantalla 2026-11-03 001751" src="https://github.com/user-attachments/assets/af344891-0564-481e-9f20-4e2ff67f605b" />
+
+
+## CONCLUSIONES
+Las pruebas de la transacción anidada muestran que el ajuste masivo de precios se comporta como una unidad atómica, aunque cada producto se actualice dentro de su propia transacción interna utilizando la función fn_PrecioAjustado. 
+
+Los casos 2 y 3 son los que mas reflejan las ventajas de la transacción: cuando se detecta que algún producto supera el precio tope (RN.13), todos los productos de la categoría ya fueron actualizados y cada COMMIT interno solo había decrementado @@TRANCOUNT. El ROLLBACK del procedimiento externo deshace entonces la totalidad de los cambios, y los precios regresan a su valor original. Esto confirma que un COMMIT interno no persiste nada mientras la transacción externa siga abierta, y que la regla de negocio se hace cumplir de forma completa: el aumento se confirma entero (caso 1) o se cancela entero (casos 2 y 3). El caso 4 muestra que las validaciones previas evitan abrir transacciones innecesarias, y el caso 5 que el procedimiento interno, ejecutado solo, confirma de manera real.
