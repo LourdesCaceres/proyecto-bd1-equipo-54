@@ -22,3 +22,11 @@ en ese caso el INSTEAD OF. Como CATEGORIA es la tabla con menos elementos y con 
 parte importante del sistema y que su eliminación era muy grave para el mantenimiento del mismo. Con esto, decidimos que el usuario no pueda
 eliminar una categoria y esto lo hicimos con un trigger, el cual mediante INSTEAD OF DELETE, verifica si el usuario intenta hacer un DELETE
 en CATEGORIA y, si lo hace, reemplaza esa acción por la impresión de un mensaje en pantalla informando que la acción no está permitida.
+
+## VENTAJAS
+
+Al implementar los triggers pudimos apreciar gran parte de ventajas que suponen. Decidimos implementar una única tabla AUDITORIA 
+para todas las tablas de la base de datos excepto PRODUCTO, de forma que en una única tabla podemos apreciar todas las modificaciones realizadas de una manera mucho más sencilla y veloz que realizar un tabla auxiliar para cada una. Hicimos separado
+la auditoria de PRODUCTO para poder mostrar el manejo de triggers de una forma más sencilla además de incorporar una tabla que registre los productos que fueron eliminados de forma que el usuario pueda "recuperarlos" en un futuro.
+
+Como ventajas vimos la posibilidad de documentar el desarrollo de una base de datos, prevenir modificaciones de datos perjudiciales, informando además del problema al usuario. Mejora la seguridad al permitir una especie de verificación para no eliminar o modificar datos delicados como eliminar un cliente con muchas ventas registradas.
