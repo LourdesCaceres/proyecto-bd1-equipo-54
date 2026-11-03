@@ -38,3 +38,7 @@ Como PRODUCTO y CATEGORIA tienen triggers específicos, decidimos probar modific
 Proveedor modificado: 
 <img width="776" height="173" alt="Captura de pantalla (136)" src="https://github.com/user-attachments/assets/8adec25e-3112-4887-ae53-281bf4c41837" />
 Tabla auditoria con el cambio: <img width="919" height="246" alt="Captura de pantalla (137)" src="https://github.com/user-attachments/assets/db8d3504-05bb-4f7f-8bb7-16ee138459c3" />
+
+
+## Conclusiones
+La investigación y elaboración de los triggers en nuestra base de datos me fue muy informativo e interesante. Considero que la implementación de los triggers en las bases de datos aportan mucho a que el diseño sea más comprensible y amigable hacia el usuario, permitiendo ver de una manera más sencilla los cambios así como prevenir errores destructivos como nosotros definimos el ejemplo de no poder borrar una categoría de la base de datos. Como pudimos ver, colabora mucho con la seguridad y prevención de errores, al mantener un registro de elementos eliminados es más sencillo recuperarlos o mantener un registro constante de cualquier evento.
