@@ -63,5 +63,3 @@ Una **transacción anidada** es una transacción que se inicia dentro del ámbit
 
 * Date, C. J. (2004). *An Introduction to Database Systems* (8th ed.). Pearson Addison-Wesley.
 * Gray, J., & Reuter, A. (1992). *Transaction Processing: Concepts and Techniques*. Morgan Kaufmann Publishers.
-* Moss, J. E. B. (1981). *Nested Transactions: An Approach to Reliable Distributed Computing*. Technical Report MIT/LCS/TR-260, Massachusetts Institute of Technology.
-* Silberschatz, A., Korth, H. F., & Sudarshan, S. (2019). *Fundamentos de Bases de Datos* (*Database System Concepts*, 7a ed.). McGraw-Hill.
