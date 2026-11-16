@@ -78,9 +78,9 @@ GO
 ----------------------------------------------------------------------------------
 CREATE NONCLUSTERED INDEX VENTAS_NO_AGRUPADAS
 ON VENTAS_MASIVA (fecha)
-INCLUDE (total_venta, dni_cliente);
+INCLUDE (id_venta, total_venta, dni_cliente);
 GO
-
+    
 SELECT 
     id_venta, 
     fecha, 
