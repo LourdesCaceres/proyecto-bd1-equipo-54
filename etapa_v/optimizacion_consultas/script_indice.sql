@@ -76,7 +76,7 @@ GO
 ----------------------------------------------------------------------------------
 -- 5. CREAR ÍNDICE CON COLUMNAS INCLUIDAS (INCLUDE) Y REPETIR CONSULTA
 ----------------------------------------------------------------------------------
-CREATE NONCLUSTERED INDEX VENTAS_AGRUPADAS
+CREATE NONCLUSTERED INDEX VENTAS_NO_AGRUPADAS
 ON VENTAS_MASIVA (fecha)
 INCLUDE (total_venta, dni_cliente);
 GO
